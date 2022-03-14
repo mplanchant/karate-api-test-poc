@@ -1,18 +1,10 @@
 package foodapi;
 
-import com.intuit.karate.Runner;
-import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import com.intuit.karate.junit5.Karate;
 
 class FoodApiTest {
-
-    @Test
-    void testParallel() {
-        var results = Runner.path("classpath:foodapi")
-                //.outputCucumberJson(true)
-                .parallel(5);
-        assertEquals(0, results.getFailCount(), results.getErrorMessages());
+    @Karate.Test
+    Karate testAll() {
+        return Karate.run().relativeTo(getClass());
     }
-
 }
